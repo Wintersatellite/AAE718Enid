@@ -3,13 +3,13 @@
 
 import pandas as pd
 
-
-def load_single_sheet(file_path, sheet_name):
+ 
+def load_single_sheet(file_path, sheet_name, df=None):
     """Load a single sheet from the BEA Use Tables Excel file.
     Returns a long-format dataframe with columns: year, commodity, industry, value
     """
-    df = pd.read_excel(file_path, sheet_name=sheet_name, header=None)
-
+if df is None:
+        df = pd.read_excel(file_path, sheet_name=sheet_name, header=None)
     year = int(sheet_name)
 
     # Row 5 has industry codes, Row 6 has industry names
